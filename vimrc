@@ -12,7 +12,8 @@ augroup vimrc
 	autocmd BufNewFile,BufRead *.mfrp setlocal expandtab   autoindent tabstop=4 softtabstop=4 shiftwidth=4 filetype=emfrp
 	autocmd BufNewFile,BufRead *.v    setlocal expandtab   autoindent tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufNewFile,BufRead *.py   setlocal noexpandtab autoindent tabstop=3 softtabstop=3 shiftwidth=3
-	autocmd BufNewFile,BufRead *.lisp setlocal noexpandtab autoindent tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufNewFile,BufRead *.lisp setlocal expandtab   autoindent tabstop=3 softtabstop=3 shiftwidth=3 filetype=lisp
+	autocmd BufNewFile,BufRead *.el   setlocal expandtab   autoindent tabstop=3 softtabstop=3 shiftwidth=3
 augroup END
 
 
