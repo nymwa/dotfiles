@@ -1,4 +1,4 @@
-# alias
+# alias 
 alias l=ls
 alias la="ls -al"
 alias lat="ls -at"

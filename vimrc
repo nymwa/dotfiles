@@ -2,7 +2,7 @@ set encoding=utf-8
 scriptencoding utf-8
 
 syntax on
-
+ 
 augroup vimrc
 	autocmd!
 	filetype plugin on
