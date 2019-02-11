@@ -42,13 +42,13 @@ Config{
                          , "--high"    , "red"
                          ] 10
     , Run Com "sh"       [ "-c", "sh ~/.xmobar-weather.sh"
-                         ] "weather" 1800
-    , Run Com "sh"       [ "-c", "amixer -c 0 get Master | grep -oP \"[0-9]*(?=%)\""
-                         ] "sound" 2
+                         ] "weather" 6000
+    , Run Com "sh"       [ "-c", "sh ~/.xmobar-sound.sh"
+                         ] "sound" 3
     , Run Com "sh"       [ "-c", "echo \"<fc=green>$(printf \"%3.f\" $(xbacklight))</fc>\""
-                         ] "backlight" 2
+                         ] "backlight" 3
     , Run Com "sh"       [ "-c", "sh ~/.xmobar-battery.sh"
-                         ] "battery" 10
+                         ] "battery" 50
     , Run Com "sh"       [ "-c" , "LANG='ja_JP.UTF-8' date +'%Y-%m-%d(%a) %H:%M:%S'"
                          ] "date" 10
     , Run Com "sh"       ["-c", "uname -r | awk -F '-' '{print $1}'"

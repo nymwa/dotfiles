@@ -12,7 +12,7 @@ Config{
   -- layout
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | Cpu: %multicpu% | Mem: %memory% * %swap% | Snd: <fc=#CCCC00>%sound%</fc> |  Lit: %backlight% | Bat: %battery% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
+  , template = "<fn=1>%StdinReader%</fn> }{ Cpu: %multicpu% | Mem: %memory% * %swap% | Snd: <fc=#CCCC00>%sound%</fc> |  Lit: %backlight% | Bat: %battery% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
 
   -- plugins
   , commands =
@@ -41,15 +41,13 @@ Config{
                          , "--normal"  , "green"
                          , "--high"    , "red"
                          ] 10
-    , Run Com "sh"       [ "-c", "sh ~/.xmobar-weather.sh"
-                         ] "weather" 1800
     , Run Com "sh"       [ "-c", "amixer get Master | grep -oP \"[0-9]*(?=%)\""
                          ] "sound" 2
     , Run Com "sh"       [ "-c", "echo \"<fc=green>$(printf \"%3.f\" $(xbacklight))</fc>\""
                          ] "backlight" 2
     , Run Com "sh"       [ "-c", "sh ~/.xmobar-battery.sh"
                          ] "battery" 10
-    , Run Com "sh"       [ "-c" , "LANG='ja_JP.UTF-8' date +'%Y-%m-%d(%a) %H:%M:%S'"
+    , Run Com "sh"       [ "-c" , "LANG='ja_JP.UTF-8' date +'%H:%M:%S'"
                          ] "date" 10
     , Run Com "sh"       ["-c", "uname -r | awk -F '-' '{print $1}'"
                          ] "uname" 100

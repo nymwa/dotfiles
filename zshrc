@@ -1,4 +1,5 @@
 # alias 
+alias ls="ls --color=auto"
 alias l=ls
 alias la="ls -al"
 alias lat="ls -at"
@@ -7,6 +8,7 @@ alias v=vim
 alias e=emacs
 alias mozc-config="/usr/lib/mozc/mozc_tool --mode=config_dialog"
 alias mozc-dict="/usr/lib/mozc/mozc_tool --mode=dictionary_tool"
+alias ≡╹ω╹≡="~/Sync/dotfiles/mofu.zsh"
 
 # 文字コード
 export LANG=ja_JP.UTF-8
@@ -73,6 +75,7 @@ bindkey '^[' insert-last-word
 # 自動補完
 autoload -U compinit
 compinit
+zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 # もしかして
 setopt correct
