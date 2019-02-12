@@ -83,8 +83,8 @@ myKeys =
    , ("<XF86AudioMute>"         , spawn "amixer -c 0 sset Master off; amixer -c 0 sset Master 0%")
    , ("<XF86AudioLowerVolume>"  , spawn "amixer -c 0 sset Headphone on; amixer -c 0 sset Master {on,3%-}")
    , ("<XF86AudioRaiseVolume>"  , spawn "amixer -c 0 sset Headphone on; amixer -c 0 sset Master {on,3%+}")
-   , ("<XF86MonBrightnessDown>" , spawn "xbacklight -set $(expr $(printf \"%2.f\n\" $(xbacklight -get)) - 5)")
-   , ("<XF86MonBrightnessUp>"   , spawn "xbacklight -set $(expr $(printf \"%2.f\n\" $(xbacklight -get)) + 5)")
+   , ("<XF86MonBrightnessDown>" , spawn "light -U 10")
+   , ("<XF86MonBrightnessUp>"   , spawn "light -A 10")
    , ("<Print>"                 , spawn "deepin-screenshot")
    ]
 
