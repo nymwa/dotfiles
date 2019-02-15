@@ -3,6 +3,8 @@ import Data.Monoid
 import System.Exit  -- M-S-qのため
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+import XMonad.Actions.CycleWS    -- WorkSpace, Screenの切り替え
+import XMonad.Actions.CopyWindow -- ウィンドウの複製
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks  -- 
 import XMonad.Util.EZConfig      -- additional
@@ -16,10 +18,13 @@ myBar = "xmobar"
 myPP  = xmobarPP { ppCurrent = xmobarColor "red" "" . wrap "<" ">" }
 toggleStructsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
+-- ワークスペース
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8" ,"9", "0"]
+
 -- 基本設定
 myConfig = defaultConfig
    { -- ターミナルエミュレータ
-　　 terminal   = "urxvt"
+     terminal   = "urxvt"
      -- modキー
    , modMask    = mod4Mask 
      -- ウィンドウの外枠の幅
@@ -28,7 +33,7 @@ myConfig = defaultConfig
    , normalBorderColor  = "#EDEDED"
    , focusedBorderColor = "#ED0000"
      -- ワークスペース
-   , workspaces = ["1", "2", "3", "4", "5", "6", "7", "8" ,"9", "0"]
+   , workspaces = myWorkspaces
      -- 新しいウィンドウが出たときにフォーカスをそちらに移動させる
    , focusFollowsMouse = True
      -- 可能なレイアウト
@@ -63,6 +68,7 @@ myKeys =
      ("M-S-<Return>", spawn "urxvt")
    , ("M-p"         , spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
    , ("M-w"         , spawn "chromium") 
+   , ("M-s"         , spawn "deepin-screenshot") 
    , ("M-<Space>"   , sendMessage NextLayout)
    , ("M-S-<Space>" , sendMessage FirstLayout)
    , ("M-n"         , refresh)
@@ -86,6 +92,23 @@ myKeys =
    , ("<XF86MonBrightnessDown>" , spawn "light -U 10")
    , ("<XF86MonBrightnessUp>"   , spawn "light -A 10")
    , ("<Print>"                 , spawn "deepin-screenshot")
+   ]
+   ++
+   [
+     ("M-<L>"       , prevWS)
+   , ("M-<R>"       , nextWS)
+   , ("M-<U>"       , prevScreen)
+   , ("M-<D>"       , nextScreen)
+   , ("M-S-<L>"     , shiftToPrev >> prevWS)
+   , ("M-S-<R>"     , shiftToNext >> nextWS)
+   , ("M-S-<U>"     , shiftPrevScreen)
+   , ("M-S-<D>"     , shiftNextScreen)
+   ]
+   ++
+   [ ("M-" ++ otherModMasks ++ [key], action tag)
+      | (tag, key)  <- zip myWorkspaces "1234567890"
+      , (otherModMasks, action) <- [ (""    , windows . W.view)
+                                   , ("S-"  , windows . W.shift)]
    ]
 
 -- マウスの設定

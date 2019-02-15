@@ -30,6 +30,8 @@ set autoread
 set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
+" 矢印キー等のvi互換をやめる
+set nocompatible
 
 
 " 見た目系
