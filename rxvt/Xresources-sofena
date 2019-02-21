@@ -1,17 +1,18 @@
 ! Cursor theme
 xcursor.theme: xcursor-breeze
 
+! disable ISO mode
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
 ! Scrollbar
 URxvt.scrollBar: off
 
 ! Fonts
 Xft.autohint:0
 Xft.hintstyle: hintfull
-Xft.hinting: 0
-URxvt*font: xft:Fira Code:style=Retina:size=10:antialias=true:hinting=true,\
-            xft:Symbola:size=10,\
-            xft:MyricaM M:size=10:antialias=true,\
-            xft:Noto Sans Mono:size=10:antialias=true
+Xft.hinting: true
+URxvt.font: xft:Fira Code:style=Retina:size=10,xft:MyricaM M
 
 ! Other
 URxvt.urlLauncher: /usr/bin/chromium

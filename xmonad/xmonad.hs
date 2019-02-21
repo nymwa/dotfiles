@@ -21,10 +21,13 @@ toggleStructsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 -- ワークスペース
 myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8" ,"9", "0"]
 
+-- ターミナルエミュレータ
+myTerminal = "gnome-terminal"
+
 -- 基本設定
 myConfig = defaultConfig
    { -- ターミナルエミュレータ
-     terminal   = "urxvt"
+     terminal   = myTerminal
      -- modキー
    , modMask    = mod4Mask 
      -- ウィンドウの外枠の幅
@@ -65,7 +68,7 @@ myManageHook = composeAll
 -- ショートカットキー
 myKeys =
    [
-     ("M-S-<Return>", spawn "urxvt")
+     ("M-S-<Return>", spawn myTerminal)
    , ("M-p"         , spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
    , ("M-w"         , spawn "chromium") 
    , ("M-s"         , spawn "deepin-screenshot") 

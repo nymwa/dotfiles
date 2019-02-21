@@ -1,6 +1,10 @@
 ! Cursor theme
 xcursor.theme: xcursor-breeze
 
+! disable ISO mode
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
 ! Scrollbar
 URxvt.scrollBar: off
 
@@ -8,12 +12,7 @@ URxvt.scrollBar: off
 Xft.autohint:0
 Xft.hintstyle: hintfull
 Xft.hinting: 0
-URxvt*kanji_encoding: UTF-8
-URxvt.font: xft:Cica:size=12:antialias=true
-!URxvt*font: xft:Fira Code:style=Retina:size=10:antialias=true:hinting=true,\
-!            xft:Symbola:size=10,\
-!            xft:MyricaM M:size=10:antialias=true,\
-!            xft:Noto Sans Mono:size=10:antialias=true
+URxvt.font: xft:Fira Code:style=Retina:size=12:antialias=true:hinting=true,xft:twahi
 
 ! Other
 URxvt.urlLauncher: /usr/bin/chromium

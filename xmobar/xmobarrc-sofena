@@ -12,12 +12,12 @@ Config{
   -- layout
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | Cpu: %multicpu% | Mem: %memory% | Snd: <fc=#CCCC00>%sound%</fc> | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
+  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | Cpu: %multicpu% | Mem: %memory% * %swap% | Snd: <fc=#CCCC00>%sound%</fc> | Lit: %backlight% | Bat: %battery% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
 
   -- plugins
   , commands =
     [ Run StdinReader
-    , Run MultiCpu       [ "--template", "<total0>, <total1>, <total2>, <total3>%"
+    , Run MultiCpu       [ "--template", "<total0>, <total1>%"
                          , "--ppad"    , "2"
                          , "--Low"     , "50"   --units: %
                          , "--High"    , "85"   --units: %
@@ -33,12 +33,22 @@ Config{
                          , "--normal"  , "green"
                          , "--high"    , "red"
                          ] 10
-    , Run Com "sh"       [ "-c", "sh ~/.xmobar-weather.sh"
+    , Run Swap           [ "--template", "<usedratio>"
+                         , "--ppad"    , "2"
+                         , "--Low"     , "20"   --units: %
+                         , "--High"    , "90"   --units: %
+                         , "--low"     , "blue"
+                         , "--normal"  , "green"
+                         , "--high"    , "red"
+                         ] 10
+    , Run Com "sh"       [ "-c", "sh ~/Sync/dotfiles/xmobar/xmobar-weather-sofena.sh"
                          ] "weather" 6000
-    , Run Com "sh"       [ "-c", "sh ~/.xmobar-sound.sh"
+    , Run Com "sh"       [ "-c", "sh ~/Sync/dotfiles/xmobar/xmobar-sound-sofena.sh"
                          ] "sound" 3
     , Run Com "sh"       [ "-c", "echo \"<fc=green>$(printf \"%3.f\" $(xbacklight))</fc>\""
                          ] "backlight" 3
+    , Run Com "sh"       [ "-c", "sh ~/Sync/dotfiles/xmobar/xmobar-battery-sofena.sh"
+                         ] "battery" 50
     , Run Com "sh"       [ "-c" , "LANG='ja_JP.UTF-8' date +'%Y-%m-%d(%a) %H:%M:%S'"
                          ] "date" 10
     , Run Com "sh"       ["-c", "uname -r | awk -F '-' '{print $1}'"
