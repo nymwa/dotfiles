@@ -12,7 +12,7 @@ Config{
   -- layout
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | Cpu: %multicpu% | Mem: %memory% * %swap% | Fon: <fc=#CCCC00>%sound1%</fc> | Spe: <fc=#CCCC00>%sound2%</fc> |  Lit: %backlight% | Bat: %battery% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
+  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | Cpu: %multicpu% | Mem: %memory% * %swap% | S %sound% | L %backlight% | B %battery% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
 
   -- plugins
   , commands =
@@ -43,10 +43,8 @@ Config{
                          ] 10
     , Run Com "sh"       [ "-c", "sh ~/Sync/dotfiles/xmobar/xmobar-weather-sofena.sh"
                          ] "weather" 1800
-    , Run Com "sh"       [ "-c", "amixer -c 0 get Headphone | grep -oP \"[0-9]*(?=%)\""
-                         ] "sound1" 2
-    , Run Com "sh"       [ "-c", "amixer -c 0 get Speaker | grep -oP \"[0-9]*(?=%)\""
-                         ] "sound2" 2
+    , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/dotfiles/xmobar/xmobar-sound-komi.lisp"
+                         ] "sound" 2
     , Run Com "sh"       [ "-c", "echo \"<fc=green>$(printf \"%3.f\" $(light -G))</fc>\""
                          ] "backlight" 2
     , Run Com "sh"       [ "-c", "sh ~/Sync/dotfiles/xmobar/xmobar-battery-qena.sh"

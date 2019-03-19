@@ -12,13 +12,15 @@ Config{
   -- layout
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | %multicpu% | %memory% | %sound% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
+  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | %multicpu% | %memory% | %sound% | %packets% | <fc=#FF3333>%uname%</fc> | <fc=#11FF55>%date%</fc>"
 
   -- plugins
   , commands =
     [ Run StdinReader
-    , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/mofuproc/client.lisp"
-                         ] "multicpu" 10
+    , Run Com "sh"       [ "-c", "sh ~/Sync/mofuproc/client.sh 8515 1"
+                         ] "multicpu" 5
+    , Run Com "sh"       [ "-c", "sh ~/Sync/mofuproc/client.sh 8516 4"
+                         ] "packets" 10
     , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/dotfiles/xmobar/xmobar-memory-komi.lisp"
                          ] "memory" 10
     , Run Com "sh"       [ "-c", "sh ~/Sync/dotfiles/xmobar/xmobar-weather-sofena.sh"
@@ -27,7 +29,7 @@ Config{
                          ] "sound" 5
     , Run Com "sh"       [ "-c" , "LANG='ja_JP.UTF-8' date +'%Y-%m-%d(%a) %H:%M:%S'"
                          ] "date" 10
-    , Run Com "sh"       ["-c", "uname -r | awk -F '-' '{print $1}'"
+    , Run Com "sh"       [ "-c", "uname -r | awk -F '-' '{print $1}'"
                          ] "uname" 100
   ]
 }

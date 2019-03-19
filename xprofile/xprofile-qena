@@ -1,0 +1,7 @@
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export DefaultIMModule=fcitx
+fcitx &
+sbcl --script ~/Sync/autorotate/autorotate.lisp 1 0 1 2 3 SIS &
+alias gnome-terminal=xfce4-terminal
