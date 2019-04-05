@@ -12,42 +12,22 @@ Config{
   -- layout
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | Cpu: %multicpu% | Mem: %memory% * %swap% | S %sound% | L %backlight% | B %battery% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
+  , template = "<fn=1>%StdinReader%</fn> }{ %multicpu% | %memory% | %sound% | %backlight% | %battery% | %packets% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
 
   -- plugins
   , commands =
     [ Run StdinReader
-    , Run MultiCpu       [ "--template", "<total0>, <total1>, <total2>, <total3>%"
-                         , "--ppad"    , "2"
-                         , "--Low"     , "50"   --units: %
-                         , "--High"    , "85"   --units: %
-                         , "--low"     , "blue"
-                         , "--normal"  , "green"
-                         , "--high"    , "red"
-                         ] 10
-    , Run Memory         [ "--template", "<usedratio>"
-                         , "--ppad"    , "2"
-                         , "--Low"     , "20"   --units: %
-                         , "--High"    , "90"   --units: %
-                         , "--low"     , "blue"
-                         , "--normal"  , "green"
-                         , "--high"    , "red"
-                         ] 10
-    , Run Swap           [ "--template", "<usedratio>"
-                         , "--ppad"    , "2"
-                         , "--Low"     , "20"   --units: %
-                         , "--High"    , "90"   --units: %
-                         , "--low"     , "blue"
-                         , "--normal"  , "green"
-                         , "--high"    , "red"
-                         ] 10
-    , Run Com "sh"       [ "-c", "sh ~/Sync/dotfiles/xmobar/xmobar-weather-sofena.sh"
-                         ] "weather" 1800
+    , Run Com "sh"       [ "-c", "sh ~/Sync/mofuproc/client.sh 8515 2"
+                         ] "multicpu" 10
+    , Run Com "sh"       [ "-c", "sh ~/Sync/mofuproc/client.sh 8516 4"
+                         ] "packets" 10
+    , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/dotfiles/xmobar/xmobar-memory-qena.lisp"
+                         ] "memory" 10
     , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/dotfiles/xmobar/xmobar-sound-komi.lisp"
-                         ] "sound" 2
-    , Run Com "sh"       [ "-c", "echo \"<fc=green>$(printf \"%3.f\" $(light -G))</fc>\""
-                         ] "backlight" 2
-    , Run Com "sh"       [ "-c", "sh ~/Sync/dotfiles/xmobar/xmobar-battery-qena.sh"
+                         ] "sound" 5
+    , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/dotfiles/xmobar/xmobar-backlight-qena.lisp"
+                         ] "backlight" 5
+    , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/dotfiles/xmobar/xmobar-battery-qena.lisp"
                          ] "battery" 10
     , Run Com "sh"       [ "-c" , "LANG='ja_JP.UTF-8' date +'%Y-%m-%d(%a) %H:%M:%S'"
                          ] "date" 10

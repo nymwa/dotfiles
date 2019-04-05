@@ -3,6 +3,8 @@ alias ls="ls --color=auto"
 alias l=ls
 alias la="ls -al"
 alias lat="ls -at"
+alias a=anki
+alias r=rhythmbox
 alias p=pwd
 alias v=vim
 alias e=emacs
