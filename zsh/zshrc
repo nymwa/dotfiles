@@ -9,6 +9,8 @@ alias p=pwd
 alias v=vim
 alias e=emacs
 alias g="gnome-terminal --working-directory=$(echo '$(pwd)') > /dev/null"
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 alias mozc-config="/usr/lib/mozc/mozc_tool --mode=config_dialog"
 alias mozc-dict="/usr/lib/mozc/mozc_tool --mode=dictionary_tool"
 alias ≡╹ω╹≡="~/Sync/dotfiles/mofu.zsh"
