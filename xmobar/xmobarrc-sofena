@@ -17,9 +17,9 @@ Config{
   -- plugins
   , commands =
     [ Run StdinReader
-    , Run Com "sh"       [ "-c", "sh ~/Sync/mofuproc/client.sh 8515 2"
+    , Run Com "sh"       [ "-c", "sh ~/Sync/unsupported/mofuproc/client.sh 8515 2"
                          ] "multicpu" 5
-    , Run Com "sh"       [ "-c", "sh ~/Sync/mofuproc/client.sh 8516 4"
+    , Run Com "sh"       [ "-c", "sh ~/Sync/unsupported/mofuproc/client.sh 8516 4"
                          ] "packets" 10
     , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/dotfiles/xmobar/xmobar-memory-qena.lisp"
                          ] "memory" 10

@@ -1,0 +1,11 @@
+[Unit]
+Description=User suspend actions
+Before=suspend.target
+
+[Service]
+User=%I
+Type=simple
+ExecStart=sh ~/Sync/dotfiles/suspend/suspend-qena.sh
+
+[Install]
+WantedBy=suspend.target

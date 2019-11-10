@@ -1,7 +1,7 @@
 Config{
   -- appearance
-    font  = "xft:Myrica M:size=9:bold:antialias=true"
-  , additionalFonts = ["xft:Noto Sans CJK JP:size=9:Medium:antialias=true", "xft:Symbola:size=9:Regular"]
+    font  = "xft:Myrica M:size=14:bold:antialias=true"
+  , additionalFonts = ["xft:Noto Sans CJK JP:size=14:Medium:antialias=true", "xft:Symbola:size=14:Regular:antialias=True"]
   , bgColor  = "#000000"
   , fgColor  = "#80CCFF"
   , position = Top
@@ -17,9 +17,9 @@ Config{
   -- plugins
   , commands =
     [ Run StdinReader
-    , Run Com "sh"       [ "-c", "sh ~/Sync/mofuproc/client.sh 8515 1"
+    , Run Com "sh"       [ "-c", "sh ~/Sync/unsupported/mofuproc/client.sh 8515 1"
                          ] "multicpu" 5
-    , Run Com "sh"       [ "-c", "sh ~/Sync/mofuproc/client.sh 8516 4"
+    , Run Com "sh"       [ "-c", "sh ~/Sync/unsupported/mofuproc/client.sh 8516 4"
                          ] "packets" 10
     , Run Com "sh"       [ "-c", "sbcl --script ~/Sync/dotfiles/xmobar/xmobar-memory-komi.lisp"
                          ] "memory" 10
