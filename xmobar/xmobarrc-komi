@@ -1,4 +1,8 @@
 Config{
+  allDesktops = True,
+  pickBroadest = False,
+  persistent = True,
+
   -- appearance
     font  = "xft:Myrica M:size=14:bold:antialias=true"
   , additionalFonts = ["xft:Noto Sans CJK JP:size=14:Medium:antialias=true", "xft:Symbola:size=14:Regular:antialias=True"]

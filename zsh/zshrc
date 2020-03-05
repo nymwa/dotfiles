@@ -17,6 +17,11 @@ alias mozc-dict="/usr/lib/mozc/mozc_tool --mode=dictionary_tool"
 alias ≡╹ω╹≡="~/Sync/dotfiles/mofu.zsh"
 alias rm='rm -iv'
 
+# anaconda
+if [ -d /home/nymwa/anaconda3 ]; then
+	export "PATH=/home/nymwa/anaconda3/bin:$PATH"
+fi
+
 # 文字コード
 export LANG=ja_JP.UTF-8
 
