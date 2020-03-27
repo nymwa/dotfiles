@@ -1,0 +1,39 @@
+Config{
+  -- appearance
+    font  = "xft:Myrica M:size=9:bold:antialias=true"
+  , additionalFonts = ["xft:Noto Sans CJK JP:size=9:Medium:antialias=true", "xft:Symbola:size=9:Regular"]
+  , bgColor  = "#000000"
+  , fgColor  = "#80CCFF"
+  , position = Top
+  , lowerOnStart = True
+  , border   = BottomB
+  , borderColor = "#646464"
+  
+  -- layout
+  , sepChar  = "%"
+  , alignSep = "}{"
+  , template = "<fn=1>%StdinReader%</fn> }{ %weather% | %multicpu% | %memory% | %sound% | %backlight% | %battery% | %packets% | <fc=#FF0000>%uname%</fc> | <fc=#CCCC00>%date%</fc>"
+
+  -- plugins
+  , commands =
+    [ Run StdinReader
+    , Run Com "sh"       [ "-c", "cat ~/.xmobar-cpu"
+                         ] "multicpu" 5
+    , Run Com "sh"       [ "-c", "cat ~/.xmobar-network"
+                         ] "packets" 10
+    , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/memory.sh"
+                         ] "memory" 10
+    , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/sound.sh"
+                         ] "sound" 5
+    , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/light.sh"
+                         ] "backlight" 5
+    , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/battery-sofena.sh"
+                         ] "battery" 10
+    , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/weather.sh"
+                         ] "weather" 6000
+    , Run Com "sh"       [ "-c" , "LANG='ja_JP.UTF-8' date +'%Y-%m-%d(%a) %H:%M:%S'"
+                         ] "date" 10
+    , Run Com "sh"       ["-c", "uname -r | awk -F '-' '{print $1}'"
+                         ] "uname" 100
+  ]
+}
