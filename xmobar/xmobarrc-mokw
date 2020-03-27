@@ -27,7 +27,7 @@ Config{
                          ] "sound" 5
     , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/light.sh"
                          ] "backlight" 5
-    , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/battery-sofena.sh"
+    , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/battery-mokw.sh"
                          ] "battery" 10
     , Run Com "sh"       [ "-c", "sh ~/dotfiles/xmobar/weather.sh"
                          ] "weather" 6000
