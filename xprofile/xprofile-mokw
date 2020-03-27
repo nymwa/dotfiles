@@ -1,0 +1,6 @@
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+python ~/dotfiles/xmobar/cpu.py &
+python ~/dotfiles/xmobar/network.py &
+fcitx &
