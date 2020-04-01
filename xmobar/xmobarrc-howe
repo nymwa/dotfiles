@@ -1,7 +1,7 @@
 Config{
   -- appearance
-    font  = "xft:Myrica M:size=12:bold:antialias=true"
-  , additionalFonts = ["xft:Noto Sans CJK JP:size=12:Medium:antialias=true", "xft:Symbola:size=12:Regular"]
+    font  = "xft:Myrica M:size=9:bold:antialias=true"
+  , additionalFonts = ["xft:Noto Sans CJK JP:size=9:Medium:antialias=true", "xft:Symbola:size=9:Regular"]
   , bgColor  = "#000000"
   , fgColor  = "#80CCFF"
   , position = Top
