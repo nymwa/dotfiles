@@ -5,4 +5,3 @@ fcitx &
 sh ~/Sync/dotfiles/arandr/screen-layout-komi.sh &
 python ~/Sync/dotfiles/xmobar/cpu.py &
 python ~/Sync/dotfiles/xmobar/network.py &
-xmodmap -e "keysym Menu = Super_R"

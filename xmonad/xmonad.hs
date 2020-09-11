@@ -71,7 +71,7 @@ myKeys =
      ("M-S-<Return>", spawn myTerminal)
    , ("M-p"         , spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
    , ("M-w"         , spawn "chromium") 
-   , ("M-s"         , spawn "deepin-screenshot") 
+   , ("M-s"         , spawn "deepin-screen-recorder") 
    , ("M-<Space>"   , sendMessage NextLayout)
    , ("M-S-<Space>" , sendMessage FirstLayout)
    , ("M-n"         , refresh)
